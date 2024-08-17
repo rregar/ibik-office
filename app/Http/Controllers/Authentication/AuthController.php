@@ -8,9 +8,9 @@ use App\Http\Requests\Authentication\AuthRequest;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function signIn()
     {
-        return "view";
+        return response()->json(200);
     }
 
     public function authenticate(AuthRequest $request)
@@ -27,13 +27,7 @@ class AuthController extends Controller
         ])->withInput();
     }
 
-    public function signIn(Request $request)
-    {
-        // Memanggil fungsi authenticate untuk melakukan sign in
-        return $this->authenticate(new AuthRequest);
-    }
-
-    public function signOut()
+    public function signOut(Request $request)
     {
         // Menghapus atau menghancurkan sesi login dari user
         auth()->logout();

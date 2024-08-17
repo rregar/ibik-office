@@ -15,8 +15,8 @@ use App\Http\Controllers\Authentication\AuthController;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/sign-in', [AuthController::class, 'index'])->name('sign-in');
-    Route::post('/sign-in', [AuthController::class, 'signIn'])->name('sign-in.post');
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+    Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
 });
 
 Route::middleware(['auth'])->group(function () {
