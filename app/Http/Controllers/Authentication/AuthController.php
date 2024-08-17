@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Request\Authentication\AuthRequest;
+use App\Http\Requests\Authentication\AuthRequest;
 
 class AuthController extends Controller
 {
@@ -27,7 +27,7 @@ class AuthController extends Controller
         ])->withInput();
     }
 
-    public function signIn()
+    public function signIn(Request $request)
     {
         // Memanggil fungsi authenticate untuk melakukan sign in
         return $this->authenticate(new AuthRequest);
