@@ -8,32 +8,28 @@ use App\Http\Requests\Authentication\AuthRequest;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function signIn()
     {
-        return "view";
+        // Baris untuk mereturn atau memberikan respon view
+        return view('authentication.sign-in');
     }
 
     public function authenticate(AuthRequest $request)
     {
         // Baris logika untuk melakukan sign in
-        if (auth()->attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('email', 'password');
+        if (auth()->attempt($credentials)) {
             // Apabila autentikasi berhasil
             $request->session()->regenerate();
-            return redirect()->intended('dashboard')->with(['status' => 'success', 'message' => 'melakukan sign in.']);
+            return redirect()->intended('/dashboard')->with(['status' => 'success', 'message' => 'melakukan sign in.']);
         }
-        // Apabila autentikasi gagal
+
         return back()->withErrors([
             'email' => 'Kredensial yang diberikan tidak cocok.',
         ])->withInput();
     }
 
-    public function signIn(Request $request)
-    {
-        // Memanggil fungsi authenticate untuk melakukan sign in
-        return $this->authenticate(new AuthRequest);
-    }
-
-    public function signOut()
+    public function signOut(Request $request)
     {
         // Menghapus atau menghancurkan sesi login dari user
         auth()->logout();
