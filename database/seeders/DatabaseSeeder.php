@@ -18,5 +18,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Baris untuk file memanggil seeder
+        $this->call([
+            RoleAndPermissionSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }

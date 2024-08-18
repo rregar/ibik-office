@@ -158,10 +158,14 @@ return [
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
          * Package Service Providers...
+         * Penyedia layanan ini digunakan untuk paket pihak ketiga yang digunakan dalam aplikasi.
          */
+        Spatie\Permission\PermissionServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
+         * Penyedia layanan ini khusus untuk aplikasi itu sendiri.
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
