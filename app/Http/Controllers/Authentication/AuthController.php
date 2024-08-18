@@ -10,18 +10,20 @@ class AuthController extends Controller
 {
     public function signIn()
     {
-        return response()->json(200);
+        // Baris untuk mereturn atau memberikan respon view
+        return view('authentication.sign-in');
     }
 
     public function authenticate(AuthRequest $request)
     {
         // Baris logika untuk melakukan sign in
-        if (auth()->attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('email', 'password');
+        if (auth()->attempt($credentials)) {
             // Apabila autentikasi berhasil
             $request->session()->regenerate();
-            return redirect()->intended('dashboard')->with(['status' => 'success', 'message' => 'melakukan sign in.']);
+            return redirect()->intended('/dashboard')->with(['status' => 'success', 'message' => 'melakukan sign in.']);
         }
-        // Apabila autentikasi gagal
+
         return back()->withErrors([
             'email' => 'Kredensial yang diberikan tidak cocok.',
         ])->withInput();
