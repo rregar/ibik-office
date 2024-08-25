@@ -11,11 +11,12 @@
     <!-- Custom fonts for this template-->
     <link href="{{asset('assets/sbadmin-2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/ibik_office_1.PNG') }}">
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/sbadmin-2/css/sb-admin-2.min.css')}}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-primary">
+<body>
 
     <div class="container">
 
@@ -31,6 +32,9 @@
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
+                                    <div class="text-center mb-3">
+                                        <img src="{{asset('assets/img/ibik_office_1.PNG')}}" alt="" width="100" height="100">
+                                    </div>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">IBIK OFFICE</h1>
                                     </div>
@@ -54,7 +58,7 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-info btn-user btn-block">
                                             Login
                                         </button>
                                     </form>
