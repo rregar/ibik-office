@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return response()->json(200);
+        return view('dashboard');
     }
 }
