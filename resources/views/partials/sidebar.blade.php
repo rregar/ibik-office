@@ -20,33 +20,43 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#outbox" aria-expanded="true" aria-controls="outbox">
             <i class="fas fa-fw fa-folder"></i>
             <span>Surat Keluar</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+        <div id="outbox" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a class="collapse-item" href="">Surat Keluar</a>
+                <a class="collapse-item" href="">Disposisi</a>
+                <a class="collapse-item" href="">Surat Selesai</a>
             </div>
         </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#inbox" aria-expanded="true" aria-controls="inbox">
             <i class="fas fa-fw fa-folder"></i>
             <span>Surat Masuk</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+        <div id="inbox" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a class="collapse-item" href="">Surat Masuk</a>
+                <a class="collapse-item" href="">Disposisi</a>
+                <a class="collapse-item" href="">Surat Selesai</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{ request()->is('master*') ? 'active' : '' }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#masterData" aria-expanded="true" aria-controls="masterData">
+            <i class="fas fa-database"></i>
+            <span>Data Master</span>
+        </a>
+        <div id="masterData" class="collapse {{ request()->is('master*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ request()->is('master/user') ? 'active' : '' }}" href="{{ route('master.user') }}">User</a>
             </div>
         </div>
     </li>
