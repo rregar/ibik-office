@@ -25,6 +25,7 @@ class AuthRequest extends FormRequest
         return [
             'email' => 'required|email',
             'password' => 'required|string',
+            'captcha' => 'required|captcha',
         ];
     }
 
@@ -34,6 +35,7 @@ class AuthRequest extends FormRequest
             'email.required' => 'Alamat email wajib diisi.',
             'email.email' => 'Format alamat email tidak valid.',
             'password.required' => 'Kata sandi wajib diisi.',
+            'captcha.required' => 'Captcha wajib diisi.'
         ];
     }
 }

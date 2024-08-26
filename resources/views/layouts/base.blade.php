@@ -79,17 +79,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Apa anda yakin ingin keluar?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Pilih "Sign Out" untuk mengakhiri sesi anda.</div>
                 <div class="modal-footer">
                     <form action="{{ route('sign-out') }}" method="post">
                         @csrf
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Logout</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Sign Out</button>
                     </form>
                 </div>
             </div>
