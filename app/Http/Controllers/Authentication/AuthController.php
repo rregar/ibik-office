@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Authentication;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Authentication\AuthRequest;
+use Mews\Captcha\Captcha;
 
 class AuthController extends Controller
 {
@@ -12,6 +13,11 @@ class AuthController extends Controller
     {
         // Baris untuk mereturn atau memberikan respon view
         return view('authentication.sign-in');
+    }
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha' => captcha_src()]);
     }
 
     public function authenticate(AuthRequest $request)

@@ -14,6 +14,18 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/ibik_office_1.PNG') }}">
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/sbadmin-2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <style>
+        .captcha {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .captcha img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,6 +65,16 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <div class="captcha mb-3">
+                                                <span class="mx-2">{!! captcha_img() !!}</span>
+                                                <button type="button" class="btn btn-warning btn-refresh"><i class="fas fa-sync-alt"></i></button>
+                                            </div>
+                                            <input type="text" class="form-control form-control-user @error('captcha') is-invalid @enderror" placeholder="Masukkan hasil perhitungan" name="captcha">
+                                            @error('captcha')
+                                                <small class="text-danger mx-3">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
@@ -88,7 +110,17 @@
     <script src="{{asset('assets/sbadmin-2/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{asset('assets/sbadmin-2/js/sb-admin-2.min.js')}}"></script>
-
+    <script type="text/javascript">
+        $(document).on('click', '.btn-refresh', function(){
+            $.ajax({
+                type: 'GET',
+                url: '{{ route("refresh-captcha") }}',
+                success: function(data) {
+                    $('.captcha span').html('<img src="' + data.captcha + '">');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
