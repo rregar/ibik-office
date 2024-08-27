@@ -43,7 +43,10 @@
                                     <form method="POST" action="{{ route('forgot-password.send-link') }}" class="user">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user" placeholder="Masukkan alamat email...">
+                                            <input type="email" name="email" class="form-control form-control-user @error('email') is-invalid @enderror" placeholder="Masukkan alamat email...">
+                                            @error('email')
+                                                <small class="text-danger mx-3">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <button type="submit" class="btn btn-info btn-user btn-block">
                                             Kirim Link

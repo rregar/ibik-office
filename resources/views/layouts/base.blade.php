@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/ibik_office_1.PNG') }}">
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/sbadmin-2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
     @stack('styles')
 
 </head>
@@ -84,12 +85,12 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih "Sign Out" untuk mengakhiri sesi anda.</div>
+                <div class="modal-body">Pilih "Keluar" untuk mengakhiri sesi anda.</div>
                 <div class="modal-footer">
                     <form action="{{ route('sign-out') }}" method="post">
                         @csrf
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-info">Sign Out</button>
+                        <button type="submit" class="btn btn-info">Keluar</button>
                     </form>
                 </div>
             </div>
@@ -108,6 +109,59 @@
     <script src="{{ asset('assets/sbadmin-2/js/demo/chart-pie-demo.js') }}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{asset('assets/sbadmin-2/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('assets/sweetalert/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('status') == 'success')
+                Swal.fire({
+                    title: 'Sukses',
+                    text: "{{ session('message') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'error')
+                Swal.fire({
+                    title: 'Gagal',
+                    text: "{{ session('message') }}",
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'info')
+                Swal.fire({
+                    title: 'Informasi',
+                    text: "{{ session('message') }}",
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'warning')
+                Swal.fire({
+                    title: 'Peringatan',
+                    text: "{{ session('message') }}",
+                    icon: 'warning',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+        });
+    </script>
+    
     @stack('scripts')
 
 </body>

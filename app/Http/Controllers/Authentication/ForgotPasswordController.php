@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,9 +20,17 @@ class ForgotPasswordController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email',
+        ], [
+            'email.required' => 'Alamat email harus diisi.',
+            'email.email' => 'Alamat email tidak valid.',
+            'email.exists' => 'Alamat email tidak ditemukan.',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $token = Str::random(64);
 
@@ -46,11 +55,22 @@ class ForgotPasswordController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'token' => 'required',
             'email' => 'required|email|exists:users,email',
             'password' => 'required|min:8',
+        ], [
+            'token.required' => 'Token harus diisi.',
+            'email.required' => 'Alamat email harus diisi.',
+            'email.email' => 'Alamat email tidak valid.',
+            'email.exists' => 'Alamat email tidak ditemukan.',
+            'password.required' => 'Kata sandi harus diisi.',
+            'password.min' => 'Kata sandi harus memiliki minimal 8 karakter.',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $updatePassword = DB::table('password_reset_tokens')
             ->where([

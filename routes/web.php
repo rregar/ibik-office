@@ -26,7 +26,10 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('/master')->name('master.')->group(function () {
-        Route::get('/user', [UserController::class, 'index'])->name('user');
+        Route::prefix('/user')->name('user.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/get-cms-table', [UserController::class, 'getCmsTable'])->name('get-cms-table');
+        });
     });
 });
 

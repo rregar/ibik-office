@@ -51,17 +51,19 @@
         </div>
     </li>
 
-    <li class="nav-item {{ request()->is('master*') ? 'active' : '' }}">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#masterData" aria-expanded="true" aria-controls="masterData">
-            <i class="fas fa-database"></i>
-            <span>Data Master</span>
-        </a>
-        <div id="masterData" class="collapse {{ request()->is('master*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->is('master/user') ? 'active' : '' }}" href="{{ route('master.user') }}">User</a>
+    @can('manage_masters')
+        <li class="nav-item {{ request()->is('master*') ? 'active' : '' }}">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#masterData" aria-expanded="true" aria-controls="masterData">
+                <i class="fas fa-database"></i>
+                <span>Data Master</span>
+            </a>
+            <div id="masterData" class="collapse {{ request()->is('master*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item {{ request()->is('master/user/index') ? 'active' : '' }}" href="{{ route('master.user.index') }}">User</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    @endcan
 
     <!-- Divider -->
     <hr class="sidebar-divider">

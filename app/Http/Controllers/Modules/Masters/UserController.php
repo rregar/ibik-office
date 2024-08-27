@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Modules\Masters;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Modules\Masters\UserDetail;
 
 class UserController extends Controller
 {
@@ -13,6 +15,28 @@ class UserController extends Controller
     public function index()
     {
         return view('modules.masters.user.index');
+    }
+
+    public function getCmsTable(Request $request)
+    {
+        if (auth()->user()->can('manage_masters')) {
+            $query = User::select('name', 'email');
+
+            $data = $query->get();
+
+            $data->transform(function ($item, $key) {
+                $item->DT_RowIndex = $key + 1;
+                $item->name = $item->name ?? 'Data tidak ditemukan';
+                $item->name = $item->email ?? 'Data tidak ditemukan';
+                $item->action = "Aksi Belum Ada";
+                return $item;
+            });
+
+            return ['data' => $data];
+        } else {
+            $data = [];
+            return ['data' => $data];
+        }
     }
 
     /**

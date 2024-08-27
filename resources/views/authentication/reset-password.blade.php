@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/sbadmin-2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
 
 </head>
 
@@ -44,10 +45,16 @@
                                         @csrf
                                         <input type="hidden" name="token" value="{{$token}}">
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user" placeholder="Masukkan alamat email...">
+                                            <input type="email" name="email" class="form-control form-control-user  @error('email') is-invalid @enderror" placeholder="Masukkan alamat email...">
+                                            @error('email')
+                                                <small class="text-danger mx-3">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user" placeholder="Masukkan kata sandi baru...">
+                                            <input type="password" name="password" class="form-control form-control-user  @error('password') is-invalid @enderror" placeholder="Masukkan kata sandi baru...">
+                                            @error('password')
+                                                <small class="text-danger mx-3">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <button type="submit" class="btn btn-info btn-user btn-block">
                                             Reset Password
@@ -76,6 +83,58 @@
     <script src="{{ asset('assets/sbadmin-2/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/sbadmin-2/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            @if (session('status') == 'success')
+                Swal.fire({
+                    title: 'Sukses',
+                    text: "{{ session('message') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'error')
+                Swal.fire({
+                    title: 'Gagal',
+                    text: "{{ session('message') }}",
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'info')
+                Swal.fire({
+                    title: 'Informasi',
+                    text: "{{ session('message') }}",
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+    
+            @if (session('status') == 'warning')
+                Swal.fire({
+                    title: 'Peringatan',
+                    text: "{{ session('message') }}",
+                    icon: 'warning',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn-info'
+                    }
+                });
+            @endif
+        });
+    </script>
 
 </body>
 
