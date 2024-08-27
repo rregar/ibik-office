@@ -89,7 +89,7 @@
                     <form action="{{ route('sign-out') }}" method="post">
                         @csrf
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Sign Out</button>
+                        <button type="submit" class="btn btn-info">Sign Out</button>
                     </form>
                 </div>
             </div>

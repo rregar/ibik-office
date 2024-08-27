@@ -59,5 +59,21 @@ class UserSeeder extends Seeder
             'phone_number' => '085280667900',
             'profile_picture' => null,
         ]);
+
+        $user3 = User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('ibikoffice123!#'),
+        ]);
+        $user3->assignRole('admin');
+
+        UserDetail::create([
+            'user_id' => $user3->id,
+            'npm' => '0987654321',
+            'birth_date' => '1992-02-02',
+            'gender' => 'male',
+            'phone_number' => '085280667900',
+            'profile_picture' => null,
+        ]);
     }
 }

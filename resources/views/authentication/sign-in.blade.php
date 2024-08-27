@@ -67,30 +67,30 @@
                                         <div class="form-group">
                                             <div class="captcha mb-3">
                                                 <span class="mx-2">{!! captcha_img() !!}</span>
-                                                <button type="button" class="btn btn-warning btn-refresh"><i class="fas fa-sync-alt"></i></button>
+                                                <button type="button" class="btn btn-refresh"><i class="fas fa-sync-alt"></i></button>
                                             </div>
                                             <input type="text" class="form-control form-control-user @error('captcha') is-invalid @enderror" placeholder="Masukkan hasil perhitungan" name="captcha">
                                             @error('captcha')
                                                 <small class="text-danger mx-3">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <button type="submit" class="btn btn-info btn-user btn-block">
                                             Login
                                         </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small text-secondary" href="{{ route('forgot-password.index') }}">Forgot Password?</a>
                                     </div>
-                                    <div class="text-center">
+                                    {{-- <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
