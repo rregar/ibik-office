@@ -20,7 +20,7 @@ use App\Http\Controllers\Modules\Masters\{
 */
 
 Route::get('/', function () {
-    return redirect('/sign-in');
+    return view('landing-page');
 });
 
 Route::middleware(['auth'])->group(function () {
