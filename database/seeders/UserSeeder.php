@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         $user1 = User::factory()->create([
             'name' => 'staff',
             'email' => 'staff@example.com',
-            'password' => Hash::make('ibikoffice123!#'),
+            'password' => Hash::make('ibikoffice'),
         ]);
         $user1->assignRole('staff');
 
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
         $user2 = User::factory()->create([
             'name' => 'sekretaris',
             'email' => 'sekretaris@example.com',
-            'password' => Hash::make('ibikoffice123!#'),
+            'password' => Hash::make('ibikoffice'),
         ]);
         $user2->assignRole('sekretaris');
 
@@ -63,7 +63,7 @@ class UserSeeder extends Seeder
         $user3 = User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@example.com',
-            'password' => Hash::make('ibikoffice123!#'),
+            'password' => Hash::make('ibikoffice'),
         ]);
         $user3->assignRole('admin');
 
