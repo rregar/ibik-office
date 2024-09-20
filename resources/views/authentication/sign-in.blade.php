@@ -59,7 +59,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Password" name="password">
+                                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Kata sandi" name="password">
                                             @error('password')
                                                 <small class="text-danger mx-3">{{ $message }}</small>
                                             @enderror
@@ -81,12 +81,15 @@
                                             </div>
                                         </div> --}}
                                         <button type="submit" class="btn btn-info btn-user btn-block">
-                                            Login
+                                            Masuk
                                         </button>
+                                        <a href="/" class="btn btn-secondary btn-user btn-block">
+                                            Kembali
+                                        </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small text-secondary" href="{{ route('forgot-password.index') }}">Forgot Password?</a>
+                                        <a class="small text-secondary" href="{{ route('forgot-password.index') }}">Lupa kata sandi?</a>
                                     </div>
                                     {{-- <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>

@@ -7,6 +7,9 @@ use App\Http\Controllers\{
 use App\Http\Controllers\Modules\Masters\{
     UserController,
 };
+use App\Http\Controllers\Modules\Inbox\{
+    InboxController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,13 @@ use App\Http\Controllers\Modules\Masters\{
 
 Route::get('/', function () {
     return view('landing-page');
+});
+
+
+Route::middleware(['guest'])->group(function () {
+    Route::prefix('/inbox')->name('inbox.')->group(function () {
+        Route::get('/create', [InboxController::class, 'create'])->name('create');
+    });
 });
 
 Route::middleware(['auth'])->group(function () {

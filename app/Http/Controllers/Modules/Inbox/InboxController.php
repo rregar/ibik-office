@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class InboxController extends Controller
 {
-    //
+    public function create()
+    {
+        return view('guest.create-inbox');
+    }
 }

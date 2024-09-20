@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - OnePage Bootstrap Template</title>
+    <title>IBIK OFFICE</title>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -31,42 +31,42 @@
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <a href="" class="logo d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1 class="sitename">OnePage</h1>
+            <img src="{{ asset('assets/img/ibik_office_1.PNG') }}" alt="">
+            <h1 class="sitename">IBIK OFFICE</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
-            <ul>
-            <li><a href="#hero" class="active">Home<br></a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#team">Team</a></li>
-            <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            {{-- <ul>
+                <li><a href="#hero" class="active">Home<br></a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#team">Team</a></li>
+                <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
+                    <li><a href="#">Dropdown 1</a></li>
+                    <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                        <li><a href="#">Deep Dropdown 1</a></li>
+                        <li><a href="#">Deep Dropdown 2</a></li>
+                        <li><a href="#">Deep Dropdown 3</a></li>
+                        <li><a href="#">Deep Dropdown 4</a></li>
+                        <li><a href="#">Deep Dropdown 5</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Dropdown 2</a></li>
+                    <li><a href="#">Dropdown 3</a></li>
+                    <li><a href="#">Dropdown 4</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-                </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
-            </ul>
+                <li><a href="#contact">Contact</a></li>
+            </ul> --}}
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="#about">Get Started</a>
+        {{-- <a class="btn-getstarted" href="{{ route('sign-in') }}">Sign In</a> --}}
 
         </div>
     </header>
@@ -74,61 +74,72 @@
     <main class="main">
 
         <!-- Hero Section -->
-        <section id="hero" class="hero section">
+        <section id="hero" class="hero section" style="height: 100vh;">
 
-        <img src="{{ asset('assets/OnePage/assets/img/hero-bg-abstract.jpg') }}" alt="" data-aos="fade-in" class="">
+        {{-- <img src="{{ asset('assets/OnePage/assets/img/hero-bg-abstract.jpg') }}" alt="" data-aos="fade-in" class=""> --}}
+        <img src="{{ asset('assets/img/ibik_office_3.jpg') }}" alt="" data-aos="fade-in" class="">
 
         <div class="container">
             <div class="row justify-content-center" data-aos="zoom-out">
             <div class="col-xl-7 col-lg-9 text-center">
-                <h1>One Page Bootstrap Website Template</h1>
-                <p>We are team of talented designers making websites with Bootstrap</p>
+                <h1>Institut Bisnis & Informatika Kesatuan</h1>
+                <p>Kesatuan Integrated Information System (KIIS)</p>
             </div>
             </div>
-            <div class="text-center" data-aos="zoom-out" data-aos-delay="100">
-            <a href="#about" class="btn-get-started">Get Started</a>
-            </div>
+            {{-- <div class="text-center" data-aos="zoom-out" data-aos-delay="100">
+                <a href="#about" class="btn-get-started">Get Started</a>
+            </div> --}}
 
-            <div class="row gy-4 mt-5">
-            <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="100">
-                <div class="icon-box">
-                <div class="icon"><i class="bi bi-easel"></i></div>
-                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div><!--End Icon Box -->
+            <div class="row gy-4 mt-5 justify-content-center">
 
-            <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="200">
-                <div class="icon-box">
-                <div class="icon"><i class="bi bi-gem"></i></div>
-                <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="100">
+                    <a href="{{ route('inbox.create') }}">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-envelope-arrow-up"></i></div>
+                            <h4 class="title">Kirim Surat</h4>
+                            <p class="description">Kirim surat ke IBIK</p>
+                        </div>
+                    </a>
                 </div>
-            </div><!--End Icon Box -->
+                <!--End Icon Box -->
 
-            <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="300">
-                <div class="icon-box">
-                <div class="icon"><i class="bi bi-geo-alt"></i></div>
-                <h4 class="title"><a href="">Magni Dolores</a></h4>
-                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="200">
+                    <a href="{{ route('sign-in') }}">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-buildings"></i></div>
+                            <h4 class="title">IBIK OFFICE</h4>
+                            <p class="description">Aplikasi sistem informasi IBIK</p>
+                        </div>
+                    </a>
                 </div>
-            </div><!--End Icon Box -->
+                <!--End Icon Box -->
 
-            <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="400">
-                <div class="icon-box">
-                <div class="icon"><i class="bi bi-command"></i></div>
-                <h4 class="title"><a href="">Nemo Enim</a></h4>
-                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                </div>
-            </div><!--End Icon Box -->
+                {{-- <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="300">
+                    <div class="icon-box">
+                    <div class="icon"><i class="bi bi-geo-alt"></i></div>
+                    <h4 class="title"><a href="">Magni Dolores</a></h4>
+                    <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                    </div>
+                </div> --}}
+                <!--End Icon Box -->
+
+                {{-- <div class="col-md-6 col-lg-3" data-aos="zoom-out" data-aos-delay="400">
+                    <div class="icon-box">
+                    <div class="icon"><i class="bi bi-command"></i></div>
+                    <h4 class="title"><a href="">Nemo Enim</a></h4>
+                    <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                    </div>
+                </div> --}}
+                <!--End Icon Box -->
 
             </div>
         </div>
 
-        </section><!-- /Hero Section -->
+        </section>
+        <!-- /Hero Section -->
 
         <!-- About Section -->
-        <section id="about" class="about section">
+        {{-- <section id="about" class="about section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -161,10 +172,11 @@
 
         </div>
 
-        </section><!-- /About Section -->
+        </section> --}}
+        <!-- /About Section -->
 
         <!-- Stats Section -->
-        <section id="stats" class="stats section light-background">
+        {{-- <section id="stats" class="stats section light-background">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -202,10 +214,11 @@
 
         </div>
 
-        </section><!-- /Stats Section -->
+        </section> --}}
+        <!-- /Stats Section -->
 
         <!-- About Alt Section -->
-        <section id="about-alt" class="about-alt section">
+        {{-- <section id="about-alt" class="about-alt section">
 
         <div class="container">
 
@@ -234,10 +247,11 @@
 
         </div>
 
-        </section><!-- /About Alt Section -->
+        </section> --}}
+        <!-- /About Alt Section -->
 
         <!-- Clients Section -->
-        <section id="clients" class="clients section light-background">
+        {{-- <section id="clients" class="clients section light-background">
 
         <div class="container" data-aos="fade-up">
 
@@ -271,10 +285,11 @@
 
         </div>
 
-        </section><!-- /Clients Section -->
+        </section> --}}
+        <!-- /Clients Section -->
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section">
+        {{-- <section id="testimonials" class="testimonials section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -383,10 +398,11 @@
 
         </div>
 
-        </section><!-- /Testimonials Section -->
+        </section> --}}
+        <!-- /Testimonials Section -->
 
         <!-- Services Section -->
-        <section id="services" class="services section light-background">
+        {{-- <section id="services" class="services section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -495,10 +511,11 @@
 
         </div>
 
-        </section><!-- /Services Section -->
+        </section> --}}
+        <!-- /Services Section -->
 
         <!-- Call To Action Section -->
-        <section id="call-to-action" class="call-to-action section accent-background">
+        {{-- <section id="call-to-action" class="call-to-action section accent-background">
 
         <div class="container">
             <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
@@ -512,10 +529,11 @@
             </div>
         </div>
 
-        </section><!-- /Call To Action Section -->
+        </section> --}}
+        <!-- /Call To Action Section -->
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio section">
+        {{-- <section id="portfolio" class="portfolio section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -632,10 +650,11 @@
 
         </div>
 
-        </section><!-- /Portfolio Section -->
+        </section> --}}
+        <!-- /Portfolio Section -->
 
         <!-- Team Section -->
-        <section id="team" class="team section light-background">
+        {{-- <section id="team" class="team section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -723,10 +742,11 @@
 
         </div>
 
-        </section><!-- /Team Section -->
+        </section> --}}
+        <!-- /Team Section -->
 
         <!-- Pricing Section -->
-        <section id="pricing" class="pricing section">
+        {{-- <section id="pricing" class="pricing section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -787,10 +807,11 @@
 
         </div>
 
-        </section><!-- /Pricing Section -->
+        </section> --}}
+        <!-- /Pricing Section -->
 
         <!-- Faq Section -->
-        <section id="faq" class="faq section light-background">
+        {{-- <section id="faq" class="faq section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -862,10 +883,11 @@
 
         </div>
 
-        </section><!-- /Faq Section -->
+        </section> --}}
+        <!-- /Faq Section -->
 
         <!-- Contact Section -->
-        <section id="contact" class="contact section">
+        {{-- <section id="contact" class="contact section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -944,11 +966,12 @@
 
         </div>
 
-        </section><!-- /Contact Section -->
+        </section> --}}
+        <!-- /Contact Section -->
 
     </main>
 
-    <footer id="footer" class="footer light-background">
+    {{-- <footer id="footer" class="footer light-background">
 
         <div class="container footer-top">
         <div class="row gy-4">
@@ -1010,7 +1033,7 @@
         </div>
         </div>
 
-    </footer>
+    </footer> --}}
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
