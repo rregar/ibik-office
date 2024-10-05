@@ -33,7 +33,7 @@
 
         <a href="" class="logo d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="{{ asset('assets/img/ibik_office_1.PNG') }}" alt="">
+            <img src="{{ asset('assets/img/ibik_office_4.png') }}" alt=""> <img src="{{ asset('assets/img/ibik_office_1.PNG') }}" width="90" height="80" class="d-inline-block align-top mr-3" alt="">
             <h1 class="sitename">IBIK OFFICE</h1>
         </a>
 
@@ -82,7 +82,7 @@
         <div class="container">
             <div class="row justify-content-center" data-aos="zoom-out">
             <div class="col-xl-7 col-lg-9 text-center">
-                <h1>Institut Bisnis & Informatika Kesatuan</h1>
+                <h1>INSTITUT BISNIS & INFORMATIKA KESATUAN</h1>
                 <p>Kesatuan Integrated Information System (KIIS)</p>
             </div>
             </div>
@@ -97,7 +97,7 @@
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-envelope-arrow-up"></i></div>
                             <h4 class="title">Kirim Surat</h4>
-                            <p class="description">Kirim surat ke IBIK</p>
+                            <p class="description">Kirim Surat ke Ibi Kesatuan</p>
                         </div>
                     </a>
                 </div>
@@ -108,7 +108,7 @@
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-buildings"></i></div>
                             <h4 class="title">IBIK OFFICE</h4>
-                            <p class="description">Aplikasi sistem informasi IBIK</p>
+                            <p class="description">Login Sebagai Admin</p>
                         </div>
                     </a>
                 </div>
