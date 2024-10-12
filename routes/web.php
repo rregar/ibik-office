@@ -31,6 +31,7 @@ Route::middleware(['guest'])->group(function () {
     Route::prefix('/inbox')->name('inbox.')->group(function () {
         Route::get('/create', [InboxController::class, 'create'])->name('create');
         Route::post('/get-prodi-based-faculty', [InboxController::class, 'getProdiBasedFaculty'])->name('get-prodi-based-faculty');
+        Route::post('/store', [InboxController::class, 'store'])->name('store');
     });
 });
 

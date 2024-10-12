@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inboxes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('prodi_id');
+            $table->unsignedBigInteger('prodi_id')->nullable();
             $table->unsignedBigInteger('unit_id');
             $table->unsignedBigInteger('letter_type_id');
             $table->unsignedBigInteger('letter_classification_id')->nullable();

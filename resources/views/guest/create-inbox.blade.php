@@ -65,7 +65,7 @@
                 <span id="step-indicator-3">3</span>
             </div>
             <div class="card-body">
-                <form action="" method="post" id="progressive-inbox-form">
+                <form action="{{ route('inbox.store') }}" method="post" id="progressive-inbox-form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-step active">
                         <h6 class="mb-3 font-weight-bolder">1 - KELENGKAPAN DATA DIRI</h6>
@@ -91,7 +91,7 @@
 
                         <div class="form-group">
                             <label for="phone_number">Nomor Telepon<span class="text-danger">*</span></label>
-                            <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Nomor Telepon Pengirim" required>
+                            <input type="number" name="phone_number" id="phone_number" class="form-control" placeholder="Nomor Telepon Pengirim" required>
                         </div>
 
                         <div class="form-group">
@@ -105,8 +105,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="prodi">Prodi<span class="text-danger">*</span></label>
-                            <select name="prodi" id="prodi" class="">
+                            <label for="prodi_id">Prodi<span class="text-danger">*</span></label>
+                            <select name="prodi_id" id="prodi_id" class="">
                                 <option value="">Pilih Fakultas Terlebih Dahulu</option>
                             </select>
                         </div>
@@ -121,7 +121,7 @@
                         <h5 class="mb-3">2 - Pengajuan Surat</h5>
                         <div class="form-group">
                             <label for="letter_type_id">Sifat Surat<span class="text-danger">*</span></label>
-                            <select name="letter_type_id" id="letter_type_id" class="">
+                            <select name="letter_type_id" id="letter_type_id" class="" required>
                                 <option value="">Pilih Sifat Surat</option>
                                 @foreach (DB::table('letter_types')->get() as $item)
                                     <option value="{{$item->id}}">{{ $item->name }}</option>
@@ -131,7 +131,7 @@
 
                         <div class="form-group">
                             <label for="letter_classification_id">Klasifikasi Surat<span class="text-danger">*</span></label>
-                            <select name="letter_classification_id" id="letter_classification_id" class="">
+                            <select name="letter_classification_id" id="letter_classification_id" class="" required>
                                 <option value="">Pilih Klasifikasi Surat</option>
                                 @foreach (DB::table('letter_classifications')->get() as $item)
                                     <option value="{{$item->id}}">{{ $item->name }}</option>
@@ -141,42 +141,90 @@
 
                         <div class="form-group">
                             <label for="unit_id">Ditujukan Kepada<span class="text-danger">*</span></label>
-                            <select name="unit_id" id="unit_id" class="">
+                            <select name="unit_id" id="unit_id" class="" required>
                                 <option value="">Pilih Unit</option>
                                 @foreach (DB::table('units')->get() as $item)
-                                    <option value="{{$item->id}}">{{ $item->name }}</option>
+                                    <option value="{{$item->id}}">{{ $item->name }} {{ $item->description }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Tanggal Surat<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control">
+                            <label for="date">Tanggal Surat<span class="text-danger">*</span></label>
+                            <input type="date" name="date" id="date" class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Nomor Surat<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Nomor Surat">
+                            <label for="number">Nomor Surat<span class="text-danger">*</span></label>
+                            <input type="text" name="number" id="number" class="form-control" placeholder="Nomor Surat" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Lampiran Surat<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Lampiran Surat">
+                            <label for="attachment">Lampiran Surat<span class="text-danger">*</span></label>
+                            <input type="text" name="attachment" id="attachment" class="form-control" placeholder="Lampiran Surat" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Perihal Surat<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Perihal Surat">
+                            <label for="subject">Perihal Surat<span class="text-danger">*</span></label>
+                            <input type="text" name="subject" id="subject" class="form-control" placeholder="Perihal Surat" required>
                         </div>
 
                         <div class="form-group">
                             <label for="file">Surat<span class="text-danger">*</span></label>
-                            <input type="file" name="file" id="file" class="dropify">
+                            <input type="file" name="file" id="file" class="dropify" accept="application/pdf" required>
                         </div>
                     </div>
 
                     <div class="form-step">
                         <h5 class="mb-3">3 - Ringkasan</h5>
+                        <div class="form-group">
+                            <label for="summary-type"><strong>Jenis Surat:</strong></label>
+                            <input type="text" id="summary-type" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-name"><strong>Nama Pengirim:</strong></label>
+                            <input type="text" id="summary-name" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-email"><strong>Email Pengirim:</strong></label>
+                            <input type="text" id="summary-email" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-phone"><strong>Nomor Telepon:</strong></label>
+                            <input type="text" id="summary-phone" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-address"><strong>Alamat:</strong></label>
+                            <input type="text" id="summary-address" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-letter-type"><strong>Sifat Surat:</strong></label>
+                            <input type="text" id="summary-letter-type" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-classification"><strong>Klasifikasi Surat:</strong></label>
+                            <input type="text" id="summary-classification" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-unit"><strong>Ditujukan Kepada:</strong></label>
+                            <input type="text" id="summary-unit" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-number"><strong>Nomor Surat:</strong></label>
+                            <input type="text" id="summary-number" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-attachment"><strong>Lampiran Surat:</strong></label>
+                            <input type="text" id="summary-attachment" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-subject"><strong>Perihal Surat:</strong></label>
+                            <input type="text" id="summary-subject" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary-file"><strong>Perihal Surat:</strong></label>
+                            <input type="text" id="summary-file" class="form-control" readonly>
+                        </div>
                     </div>
 
                     <div class="row mt-4">
@@ -204,13 +252,13 @@
     <script src="{{ asset('assets/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // Selectize
-            $('#type, #faculty_id, #prodi, #letter_type_id, #letter_classification_id, #unit_id').selectize();
+            // Selectize initialization
+            $('#type, #faculty_id, #prodi_id, #letter_type_id, #letter_classification_id, #unit_id').selectize();
 
-            // Dropify
+            // Dropify initialization for file uploads
             $('.dropify').dropify();
 
-            // Sweet Alert
+            // SweetAlert for session messages
             @if (session('status') == 'success')
                 Swal.fire({
                     title: 'Sukses',
@@ -259,102 +307,164 @@
                 });
             @endif
 
-            // Hide or Show Fakultas/Prodi Inputs Based on Type
-            $('#type').change(function() {
-                let typeValue = $(this).val();
-                
-                if (typeValue === 'External' || typeValue === '') {
-                    $('#faculty_id').closest('.form-group').hide();
-                    $('#prodi').closest('.form-group').hide();
-                    $('#faculty_id').removeAttr('required');
-                    $('#prodi').removeAttr('required');
-                } else if (typeValue === 'Internal') {
-                    $('#faculty_id').closest('.form-group').show();
-                    $('#prodi').closest('.form-group').show();
-                    $('#faculty_id').attr('required', 'required');
-                    $('#prodi').attr('required', 'required');
+            // Form Step Logic using jQuery
+            var currentStep = 0;
+            var formSteps = $('.form-step');
+            var nextBtn = $('#nextBtn');
+            var prevBtn = $('#prevBtn');
+
+            // Function to update the steps
+            function updateFormSteps() {
+                formSteps.each(function(index) {
+                    $(this).toggle(index === currentStep); // Show the current step, hide others
+                });
+
+                // Update step indicator and divider
+                for (let i = 1; i <= formSteps.length; i++) {
+                    const stepIndicator = $(`#step-indicator-${i}`);
+                    const divider = $(`#divider${i - 1}`);
+
+                    if (i - 1 <= currentStep) {
+                        stepIndicator.addClass('active-step');
+                        divider.addClass('active-divider');
+                    } else {
+                        stepIndicator.removeClass('active-step');
+                        divider.removeClass('active-divider');
+                    }
+                }
+
+                // Update the text and type of the next button at the last step
+                if (currentStep === formSteps.length - 1) {
+                    nextBtn.text("Kirim");
+                    nextBtn.removeClass("btn-secondary").addClass("btn-info").attr("type", "button");
+                } else {
+                    nextBtn.text("Lanjut");
+                    nextBtn.removeClass("btn-info").addClass("btn-secondary").attr("type", "button");
+                }
+            }
+
+            // Function to fill the summary at the last step
+            function updateSummary() {
+                // Ambil teks dari option yang dipilih, bukan ID-nya
+                $('#summary-type').val($('#type option:selected').text());
+                $('#summary-name').val($('#name').val());
+                $('#summary-email').val($('#email').val());
+                $('#summary-phone').val($('#phone_number').val());
+                $('#summary-address').val($('#address').val());
+                $('#summary-letter-type').val($('#letter_type_id option:selected').text());
+                $('#summary-classification').val($('#letter_classification_id option:selected').text());
+                $('#summary-unit').val($('#unit_id option:selected').text());
+                $('#summary-number').val($('#number').val());
+                $('#summary-attachment').val($('#attachment').val());
+                $('#summary-subject').val($('#subject').val());
+
+                // Untuk file, tampilkan nama file yang dipilih
+                var fileInput = $('#file')[0].files[0];
+                if (fileInput) {
+                    $('#summary-file').val(fileInput.name); // Display the file name in summary
+                }
+            }
+
+            // Function to validate each step's required fields
+            function validateFormStep(stepIndex) {
+                var isValid = true;
+                formSteps.eq(stepIndex).find("input[required], select[required]").each(function() {
+                    if (!$(this).val()) {
+                        $(this).addClass("is-invalid");
+                        isValid = false;
+                    } else {
+                        $(this).removeClass("is-invalid");
+                    }
+                });
+                return isValid;
+            }
+
+            // Handle "Next" button click
+            nextBtn.on("click", function() {
+                if (currentStep < formSteps.length - 1) {
+                    if (validateFormStep(currentStep)) {
+                        currentStep++;
+                        updateFormSteps();
+
+                        // If at the last step, fill the summary
+                        if (currentStep === formSteps.length - 1) {
+                            updateSummary();
+                        }
+                    } else {
+                        Swal.fire({
+                            title: 'Pemberitahuan!',
+                            text: 'Harap isi semua kolom yang wajib diisi sebelum melanjutkan.',
+                            icon: 'warning',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                } else if (currentStep === formSteps.length - 1) {
+                    // Only submit when "Kirim" button is clicked
+                    $('#progressive-inbox-form').submit();
                 }
             });
 
-            $('#type').trigger('change');
+            // Handle "Previous" button click
+            prevBtn.on("click", function() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateFormSteps();
+                }
+            });
 
+            // Initialize the form display
+            updateFormSteps();
+
+            // Faculty change event handler (dynamic Prodi load)
             $('#faculty_id').on('change', function() {
                 var facultyId = $(this).val();
-                var prodiSelect = $('#prodi');
+                var prodiSelect = $('#prodi_id')[0].selectize;
 
                 if (facultyId) {
-                    fetch(`{{ route("inbox.get-prodi-based-faculty") }}`, {
+                    $.ajax({
+                        url: `{{ route("inbox.get-prodi-based-faculty") }}`,
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
-                        body: JSON.stringify({ faculty_id: facultyId })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        var selectizeProdi = prodiSelect[0].selectize;
-                        selectizeProdi.clear(true);
-                        selectizeProdi.clearOptions();
-                        selectizeProdi.settings.placeholder = 'Pilih Program Studi';
-                        selectizeProdi.updatePlaceholder();
-                        data.data.forEach(function(item) {
-                            selectizeProdi.addOption({
-                                value: item.id,
-                                text: item.name
-                            });
-                        });
-                        selectizeProdi.refreshOptions();
-                    })
-                    .catch(error => console.error('Error fetching Prodi:', error));
+                        data: JSON.stringify({ faculty_id: facultyId }),
+                        success: function(data) {
+                            prodiSelect.clear(true);
+                            prodiSelect.clearOptions();
+                            prodiSelect.addOption(data.data.map(function(item) {
+                                return { value: item.id, text: item.name };
+                            }));
+                            prodiSelect.refreshOptions();
+                        },
+                        error: function(error) {
+                            console.error('Error fetching Prodi:', error);
+                        }
+                    });
                 } else {
-                    var selectizeProdi = prodiSelect[0].selectize;
-                    selectizeProdi.clear(true);
-                    selectizeProdi.clearOptions();
+                    prodiSelect.clear(true);
+                    prodiSelect.clearOptions();
                 }
             });
-        });
 
-        // Progressive Form
-        let currentStep = 0;
-        const formSteps = document.querySelectorAll(".form-step");
-        const nextBtn = document.getElementById("nextBtn");
-        const prevBtn = document.getElementById("prevBtn");
+            // Handle type change (toggle faculty/prodi fields)
+            $('#type').change(function() {
+                let typeValue = $(this).val();
 
-        function updateFormSteps() {
-            formSteps.forEach((step, index) => {
-                step.style.display = index === currentStep ? "block" : "none";
-            });
-
-            for (let i = 1; i <= formSteps.length; i++) {
-                const stepIndicator = document.getElementById(`step-indicator-${i}`);
-                const divider = document.getElementById(`divider${i - 1}`);
-
-                if (i - 1 <= currentStep) {
-                    stepIndicator.classList.add('active-step');
-                    if (divider) divider.classList.add('active-divider');
-                } else {
-                    stepIndicator.classList.remove('active-step');
-                    if (divider) divider.classList.remove('active-divider');
+                if (typeValue === 'External' || typeValue === '') {
+                    $('#faculty_id').closest('.form-group').hide();
+                    $('#prodi_id').closest('.form-group').hide();
+                    $('#faculty_id').removeAttr('required');
+                    $('#prodi_id').removeAttr('required');
+                } else if (typeValue === 'Internal') {
+                    $('#faculty_id').closest('.form-group').show();
+                    $('#prodi_id').closest('.form-group').show();
+                    $('#faculty_id').attr('required', 'required');
+                    $('#prodi_id').attr('required', 'required');
                 }
-            }
-        }
+            }).trigger('change');
 
-        nextBtn.addEventListener("click", () => {
-            if (currentStep < formSteps.length - 1) {
-                currentStep++;
-                updateFormSteps();
-            }
         });
-
-        prevBtn.addEventListener("click", () => {
-            if (currentStep > 0) {
-                currentStep--;
-                updateFormSteps();
-            }
-        });
-
-        updateFormSteps();
     </script>
 
 </body>
