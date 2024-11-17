@@ -36,7 +36,7 @@
         </div>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('inbox*') ? 'active' : '' }}">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#inbox" aria-expanded="true" aria-controls="inbox">
             <i class="fas fa-fw fa-folder"></i>
             <span>Surat Masuk</span>
@@ -44,12 +44,12 @@
         <div id="inbox" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Surat Masuk</a>
-                <a class="collapse-item" href="">Disposisi</a>
-                <a class="collapse-item" href="">Surat Selesai</a>
+                <a class="collapse-item {{ request()->is('inbox') ? 'active' : '' }}" href="{{ route('inbox.index') }}">Surat Masuk</a>
+                <a class="collapse-item {{ request()->is('inbox/disposisi') ? 'active' : '' }}" href="">Disposisi</a>
+                <a class="collapse-item {{ request()->is('inbox/selesai') ? 'active' : '' }}" href="">Surat Selesai</a>
             </div>
         </div>
-    </li>
+    </li>    
 
     @can('manage_masters')
         <li class="nav-item {{ request()->is('master*') ? 'active' : '' }}">

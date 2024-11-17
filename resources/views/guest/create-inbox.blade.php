@@ -222,7 +222,7 @@
                             <input type="text" id="summary-subject" class="form-control" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="summary-file"><strong>Perihal Surat:</strong></label>
+                            <label for="summary-file"><strong>Surat:</strong></label>
                             <input type="text" id="summary-file" class="form-control" readonly>
                         </div>
                     </div>

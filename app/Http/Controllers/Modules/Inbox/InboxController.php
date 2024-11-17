@@ -18,12 +18,66 @@ class InboxController extends Controller
 {
     public function index()
     {
-        // 
+        return view('modules.inbox.index');
     }
 
-    public function getCmsTable()
+    public function getCmsTable(Request $request)
     {
-        // 
+        $data = Inbox::select(
+                'id',
+                'prodi_id',
+                'unit_id',
+                'letter_type_id',
+                'letter_classification_id',
+                'faculty_id',
+                'type',
+                'name',
+                'phone_number',
+                'email',
+                'address',
+                'date',
+                'number',
+                'attachment',
+                'subject',
+                'file',
+            )
+            ->orderByDesc('id')
+            ->get();
+    
+        $data->transform(function ($item, $key) {
+            $item->DT_RowIndex = $key + 1;
+            $item->id = $item->id ?? 'Data tidak ditemukan';
+            $item->prodi_id = $item->prodi_id ?? 'Data tidak ditemukan';
+            $item->unit_id = $item->unit_id ?? 'Data tidak ditemukan';
+            $item->letter_type_id = $item->letter_type_id ?? 'Data tidak ditemukan';
+            $item->letter_classification_id = $item->letter_classification_id ?? 'Data tidak ditemukan';
+            $item->faculty_id = $item->faculty_id ?? 'Data tidak ditemukan';
+            $item->type = $item->type ?? 'Data tidak ditemukan';
+            $item->name = $item->name ?? 'Data tidak ditemukan';
+            $item->phone_number = $item->phone_number ?? 'Data tidak ditemukan';
+            $item->email = $item->email ?? 'Data tidak ditemukan';
+            $item->address = $item->address ?? 'Data tidak ditemukan';
+            $item->date = $item->date ?? 'Data tidak ditemukan';
+            $item->number = $item->number ?? 'Data tidak ditemukan';
+            $item->attachment = $item->attachment ?? 'Data tidak ditemukan';
+            $item->subject = $item->subject ?? 'Data tidak ditemukan';
+            $item->file = $item->file ?? 'Data tidak ditemukan';
+            $item->action = "
+                <div class='d-flex'>
+                    <a href='' class='btn btn-warning mx-2' title='EDIT'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <form action='' method='POST' class='mx-2'>
+                        <button type='submit' class='btn btn-danger delete-button' title='HAPUS'>
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
+                    </form>
+                </div>
+            ";
+            return $item;
+        });
+    
+        return ['data' => $data];
     }
 
     public function create()

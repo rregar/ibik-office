@@ -43,6 +43,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/get-cms-table', [UserController::class, 'getCmsTable'])->name('get-cms-table');
         });
     });
+    Route::prefix('/inbox')->name('inbox.')->group(function () {
+        Route::get('/', [InboxController::class, 'index'])->name('index');
+        Route::get('/get-cms-table', [InboxController::class, 'getCmsTable'])->name('get-cms-table');
+    });
 });
 
 require __DIR__.'/auth.php';
