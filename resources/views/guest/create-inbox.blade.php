@@ -139,7 +139,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="unit_id">Ditujukan Kepada<span class="text-danger">*</span></label>
                             <select name="unit_id" id="unit_id" class="" required>
                                 <option value="">Pilih Unit</option>
@@ -147,7 +147,7 @@
                                     <option value="{{$item->id}}">{{ $item->name }} {{ $item->description }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="date">Tanggal Surat<span class="text-danger">*</span></label>
